@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	<!--防止ResponseBody返回乱码 -->
+	<!--防止ResponseBody返回乱码 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<bean class="org.springframework.http.MediaType">
+								<constructor-arg index="0" value="text" />
+								<constructor-arg index="1" value="plain" />
+								<constructor-arg index="2" value="UTF-8" />
+							</bean>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<!-- 配置返回json数据 -->
+	<!-- <property name="messageConverters"> <list> <ref bean="mappingJackson2HttpMessageConverter" 
+		/> </list> </property> </bean> <bean id="mappingJackson2HttpMessageConverter" 
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"> 
+		<property name="supportedMediaTypes"> <list> <value>text/html;charset=UTF-8</value> 
+		<value>text/json;charset=UTF-8</value> <value>application/json;charset=UTF-8</value> 
+		</list> </property> </bean> -->
+	<!--这个ViewResolver 的具体原来没细究，不过CV战士们 中的一员，这样用是没问题的(参考官文) -->
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="mediaTypes">
+			<map>
+				<entry key="json" value="application/json" />   <!-- 告诉视图解析器 返回的类型为json 格式 -->
+			</map>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<!-- 这个 View 比较重要,ModelAndView 里的数据变成JSON -->
+				<bean
+					class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- maxUploadSize:文件上传的最大值以byte为单位 -->
+		<property name="maxUploadSize" value="1024000"></property>
+	</bean>
+
+	<!-- 配置扫描组件路径 controller service -->
+	<context:component-scan base-package="com.xnzygxpt" />
+	<!-- zj -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" 
+		/> -->
+	<!-- 配置视图解析器 "/WEB-INF/jsp/ok.jsp" -->
+	<!-- <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+		<property name="prefix" value="/" /> <property name="suffix" value=".jsp" 
+		/> </bean> -->
+
+	<!--静态资源 -->
+	<!-- <mvc:resources mapping="/images/**" location="/images/" /> <mvc:resources 
+		mapping="/JS/**" location="/JS/" /> <mvc:resources mapping="/Css/**" location="/Css/" 
+		/> <mvc:resources mapping="/**/*.htm" location="/" /> <mvc:resources mapping="*.htm" 
+		location="/" /> <mvc:resources mapping="/style/**" location="/style/" /> -->
+	<mvc:resources mapping="/updata/upimage/**" location="/updata/upimage/" />
+
+	<!-- 开启MVC注解驱动 -->
+
+
+	<!-- 配置DateSource -->
+	<context:property-placeholder location="classpath:db.properties" />
+	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.name}" />
+		<property name="password" value="${jdbc.pass}" />
+	</bean>
+	<!-- 配置SqlSessionFactory -->
+	<bean id="sf" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="ds" />
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+	</bean>
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.xnzygxpt" />
+		<property name="sqlSessionFactoryBeanName" value="sf" />
+	</bean>
+
+
+	<bean id="tm"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="ds" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="tm" />
+	<mvc:annotation-driven />
+</beans>

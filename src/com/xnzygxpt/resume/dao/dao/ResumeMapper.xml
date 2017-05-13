@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xnzygxpt.resume.dao.dao.ResumeMapper">
+
+	<insert id="add" parameterType="Resume" useGeneratedKeys="true"
+		keyProperty="resumeid">
+		insert into
+		Resume(userid,sex,birth_year,education,picture,exp_salary,exp_area,describe,tel,name,exp_position,work_year,write_time)
+		values
+		(#{userid},#{sex},#{birth_year},#{education},#{picture},#{exp_salary},#{exp_area},#{describe},#{tel},#{name},#{exp_position},#{work_year},date_format(now(),'%Y-%c-%d
+		%h:%i:%s'))
+	</insert>
+	<update id="update" parameterType="Resume">
+		update Resume set
+		sex=#{sex},birth_year=#{birth_year},education=#{education},picture=#{picture},exp_salary=#{exp_salary},describe=#{describe},tel=#{tel},name=#{name},exp_position=#{exp_position},work_year=#{work_year},write_time=date_format(now(),'%Y-%c-%d
+		%h:%i:%s')
+		where resumeid=#{resumeid}
+	</update>
+	<select id="queryByID" parameterType="int" resultType="Resume">
+		select
+		*
+		from Resume where resumeid=#{resumeid}
+	</select>
+	<delete id="del" parameterType="int">
+		delete from Resume
+		where
+		resumeid=#{resumeid}
+	</delete>
+	<select id="queryByOne" parameterType="int" resultType="Resume">
+		select
+		*
+		from Resume
+		where userid=#{userid}
+	</select>
+</mapper>

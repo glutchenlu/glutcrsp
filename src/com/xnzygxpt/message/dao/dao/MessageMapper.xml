@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xnzygxpt.message.dao.dao.MessageMapper">
+
+	<insert id="add" parameterType="Message" useGeneratedKeys="true"
+		keyProperty="messageid">
+		insert into
+		Message(userid,message,message_class,message_time,type)
+		values
+		(#{userid},#{message},#{message_class},date_format(now(),'%Y-%c-%d
+		%h:%i:%s'))
+	</insert>
+	<select id="queryByID" parameterType="int" resultType="Message">
+		select
+		*
+		from Message where messageid=#{messageid}
+	</select>
+	<delete id="del" parameterType="int">
+		delete from Message
+		where
+		messageid=#{messageid}
+	</delete>
+	<select id="queryAll" resultType="Message">
+		select
+		* from Message
+	</select>
+</mapper>

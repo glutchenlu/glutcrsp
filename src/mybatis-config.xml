@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<package name="com.xnzygxpt" />
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="com/xnzygxpt/basic/dao/dao/BasicMapper.xml" />
+		<mapper resource="com/xnzygxpt/mycollection/dao/dao/MyCollectionMapper.xml" />
+		<mapper resource="com/xnzygxpt/courier/dao/dao/CourierMapper.xml" />
+		<mapper resource="com/xnzygxpt/dating/dao/dao/DatingMapper.xml" />
+		<mapper resource="com/xnzygxpt/goods/dao/dao/GoodsMapper.xml" />
+		<mapper resource="com/xnzygxpt/information/dao/dao/InformationMapper.xml" />
+		<mapper resource="com/xnzygxpt/learning_data/dao/dao/LearningDataMapper.xml" />
+		<mapper resource="com/xnzygxpt/message/dao/dao/MessageMapper.xml" />
+		<mapper resource="com/xnzygxpt/resume/dao/dao/ResumeMapper.xml" />
+		<mapper resource="com/xnzygxpt/second_goods/dao/dao/SecondGoodsMapper.xml" />
+		<mapper resource="com/xnzygxpt/setting/dao/dao/SettingMapper.xml" />
+		<mapper resource="com/xnzygxpt/train_ticket/dao/dao/TrainTicketMapper.xml" />
+		<mapper resource="com/xnzygxpt/work/dao/dao/WorkMapper.xml" />
+		<mapper resource="com/xnzygxpt/xuser/dao/dao/XUserMapper.xml" />
+		<mapper resource="com/xnzygxpt/company/dao/dao/CompanyMapper.xml" />
+	</mappers>
+</configuration>

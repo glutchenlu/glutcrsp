@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xnzygxpt.mycollection.dao.dao.MyCollectionMapper">
+
+	<insert id="add" parameterType="MyCollection" useGeneratedKeys="true"
+		keyProperty="collectionid">
+		insert into
+		mycollection(userid,collection_time,collection_contentid,type) values
+		(#{userid},date_format(now(),'%Y-%c-%d
+		%h:%i:%s'),#{collection_contentid},#{type})
+	</insert>
+	<delete id="del" parameterType="int">
+		delete from mycollection
+		where
+		collectionid=#{collectionid}
+	</delete>
+	<select id="queryByID" parameterType="int" resultType="MyCollection">
+		select
+		*
+		from mycollection where collectionid=#{collectionid}
+	</select>
+	<select id="queryAll" resultType="MyCollection">
+		select
+		* from mycollection
+	</select>
+</mapper>

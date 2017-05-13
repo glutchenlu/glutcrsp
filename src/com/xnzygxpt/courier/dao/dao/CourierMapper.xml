@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xnzygxpt.courier.dao.dao.CourierMapper">
+
+	<insert id="add" parameterType="Courier" useGeneratedKeys="true"
+		keyProperty="courierid">
+		insert into
+		courier(userid,receive_time,merchant,detail,price,release_time,type)
+		values
+		(#{userid},#{receive_time},#{merchant},#{detail},#{price},date_format(now(),'%Y-%c-%d
+		%h:%i:%s'),1)
+	</insert>
+	<update id="update" parameterType="Courier">
+		update courier set
+		receive_time=#{receive_time},merchant=#{merchant},detail=#{detail},price=#{price}
+		where courierid=#{courierid}
+	</update>
+	<select id="queryByID" parameterType="int" resultType="Courier">
+		select
+		*
+		from courier where courierid=#{courierid}
+	</select>
+	<delete id="del" parameterType="int">
+		delete from courier
+		where
+		courierid=#{courierid}
+	</delete>
+	<select id="queryAll" resultType="Courier">
+		select
+		* from Courier
+	</select>
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xnzygxpt.TrainTicket.dao.dao.TrainTicketMapper">
+
+	<insert id="add" parameterType="TrainTicket" useGeneratedKeys="true"
+		keyProperty="train_ticketid">
+		insert into
+		Train_Ticket(userid,receive_time,station,detail,price,release_time,type)
+		values
+		(#{userid},#{receive_time},#{station},#{detail},#{price},date_format(now(),'%Y-%c-%d
+		%h:%i:%s'),5)
+	</insert>
+	<update id="update" parameterType="TrainTicket">
+		update Train_Ticket set
+		receive_time=#{receive_time},station=#{station},detail=#{detail},price=#{price}
+		where train_ticketid=#{train_ticketid}
+	</update>
+	<select id="queryByID" parameterType="int" resultType="TrainTicket">
+		select
+		*
+		from Train_Ticket where train_ticketid=#{train_ticketid}
+	</select>
+	<delete id="del" parameterType="int">
+		delete from Train_Ticket
+		where
+		train_ticketid=#{train_ticketid}
+	</delete>
+	<select id="queryAll" resultType="TrainTicket">
+		select
+		* from Train_Ticket
+	</select>
+</mapper>

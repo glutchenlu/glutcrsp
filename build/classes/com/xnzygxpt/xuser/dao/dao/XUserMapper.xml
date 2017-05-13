@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xnzygxpt.xuser.dao.dao.XUserMapper">
+
+	<insert id="add" parameterType="XUser">
+		insert into
+		user(userid,password,datingid,basicid,settingid,status,crtime) values
+		(#{userid},#{password},#{datingid},#{basicid},#{settingid},0,date_format(now(),'%Y-%c-%d
+		%h:%i:%s'))
+	</insert>
+	<update id="updateStatus" parameterType="XUser">
+		update user set
+		status=#{status}
+		where userid=#{userid}
+	</update>
+	<select id="queryByID" parameterType="String" resultType="XUser">
+		select
+		* from user where userid=#{userid}
+	</select>
+</mapper>

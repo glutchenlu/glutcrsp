@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xnzygxpt.basic.dao.dao.BasicMapper">
+
+	<insert id="add" parameterType="Basic" useGeneratedKeys="true"
+		keyProperty="basicid">
+		insert into
+		basic()
+		values
+		()
+	</insert>
+	<update id="updatecredit" parameterType="Basic">
+		update basic set
+		credit=#{credit} where basicid=#{basicid}
+	</update>
+	<update id="update" parameterType="Basic">
+		update basic set
+		school=#{school},name=#{name},sex=#{sex},tel=#{tel},birthday=#{birthday},picture=#{picture},email=#{email},stuid=#{stuid},school=#{school}
+		where basicid=#{basicid}
+	</update>
+	<select id="queryByID" parameterType="int" resultType="Basic">
+		select
+		*
+		from basic where basicid=#{basicid}
+	</select>
+</mapper>

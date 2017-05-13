@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xnzygxpt.second_goods.dao.dao.SecondGoodsMapper">
+
+	<insert id="add" parameterType="SecondGoods" useGeneratedKeys="true"
+		keyProperty="second_goodsid">
+		insert into
+		Second_Goods(userid,classify,area,price,title,detail,keyword,source,Goods_name,release_time,type,tel,telname,pic,degree)
+		values
+		(#{userid},#{classify},#{area},#{price},#{title},#{detail},#{keyword},#{source},#{goods_name},date_format(now(),'%Y-%c-%d-%H:%i:%s'),4,#{tel},#{telname},#{pic},#{degree})
+	</insert>
+	<update id="update" parameterType="SecondGoods">
+		update Second_Goods set
+		classify=#{classify},area=#{area},price=#{price},title=#{title},detail=#{detail},keyword=#{keyword},source=#{source},goods_name=#{goods_name},tel=#{tel},telname=#{telname},pic=#{pic},degree=#{degree}
+		where second_goodsid=#{second_goodsid}
+	</update>
+	<select id="queryByID" parameterType="int" resultType="SecondGoods">
+		select
+		*
+		from Second_Goods where second_goodsid=#{second_goodsid}
+	</select>
+	<delete id="del" parameterType="int">
+		delete from Second_Goods
+		where
+		second_goodsid=#{second_goodsid}
+	</delete>
+	<select id="queryAll" resultType="SecondGoods">
+		select
+		* from Second_Goods
+	</select>
+	<select id="queryByClass" parameterType="string"
+		resultType="SecondGoods">
+		select
+		* from Second_Goods where classify=#{classify}
+	</select>
+</mapper>

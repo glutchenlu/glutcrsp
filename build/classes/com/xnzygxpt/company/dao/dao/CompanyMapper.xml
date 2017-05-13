@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xnzygxpt.company.dao.dao.CompanyMapper">
+
+	<insert id="add" parameterType="Company" useGeneratedKeys="true"
+		keyProperty="companyid">
+		insert into
+		company(companyid,companyname,nature,companyarea,detail,scale,tel)
+		values
+		(#{companyid},#{companyname},#{nature},#{companyarea},#{detail},#{scale},#{tel})
+	</insert>
+	<update id="update" parameterType="Company">
+		update company set
+		nature=#{nature},companyarea=#{companyarea},detail=#{detail},scale=#{scale},tel=#{tel}
+		where companyid=#{companyid}
+	</update>
+	<select id="queryByID" parameterType="int" resultType="Company">
+		select
+		* from company where companyid=#{companyid}
+	</select>
+	<select id="queryByName" parameterType="String" resultType="Company">
+		select
+		* from company where companyname=#{companyname}
+	</select>
+</mapper>

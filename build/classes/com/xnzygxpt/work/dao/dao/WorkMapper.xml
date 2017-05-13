@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xnzygxpt.work.dao.dao.WorkMapper">
+
+	<insert id="add" parameterType="Work" useGeneratedKeys="true"
+		keyProperty="workid">
+		insert into
+		Work(userid,classify,keyword,title,work_area,welfare,detail,salary,education,source,experience,position,release_time,type,count,tel,industry)
+		values
+		(#{userid},#{classify},#{keyword},#{title},#{work_area},#{welfare},#{detail},#{salary},#{education},#{source},#{experience},#{position},date_format(now(),'%Y-%c-%d
+		-%H:%i:%s'),6,#{count},#{tel},#{industry})
+	</insert>
+	<update id="update" parameterType="Work">
+		update Work set
+		classify=#{classify},keyword=#{keyword},title=#{title},work_area=#{work_area},welfare=#{welfare},detail=#{detail},salary=#{salary},education=#{education},source=#{source},experience=#{experience},position=#{position},count=#{count},tel=#{tel},industry=#{industry}
+		where workid=#{workid}
+	</update>
+	<select id="queryByID" parameterType="int" resultType="Work">
+		select
+		*
+		from Work where workid=#{workid}
+	</select>
+	<delete id="del" parameterType="int">
+		delete from Work
+		where
+		workid=#{workid}
+	</delete>
+	<select id="queryAll" resultType="Work">
+		select
+		* from Work
+	</select>
+</mapper>

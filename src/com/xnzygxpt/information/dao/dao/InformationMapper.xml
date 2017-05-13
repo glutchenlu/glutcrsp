@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xnzygxpt.information.dao.dao.InformationMapper">
+
+	<insert id="add" parameterType="Information" useGeneratedKeys="true"
+		keyProperty="informationid">
+		insert into
+		Information(userid,classify,title,detail,keyword,theme,release_time,type)
+		values
+		(#{userid},#{classify},#{title},#{detail},#{keyword},#{theme},date_format(now(),'%Y-%c-%d
+		%h:%i:%s'),7)
+	</insert>
+	<update id="update" parameterType="Information">
+		update Information set
+		classify=#{classify},title=#{title},detail=#{detail},keyword=#{keyword},theme=#{theme}
+		where Informationid=#{Informationid}
+	</update>
+	<select id="queryByID" parameterType="int" resultType="Information">
+		select
+		*
+		from Information where Informationid=#{Informationid}
+	</select>
+	<delete id="del" parameterType="int">
+		delete from Information
+		where
+		Informationid=#{Informationid}
+	</delete>
+	<select id="queryAll" resultType="Information">
+		select
+		* from Information
+	</select>
+	<select id="queryByClass" parameterType="string"
+		resultType="Information">
+		select
+		* from Information where classify=#{classify}
+	</select>
+</mapper>

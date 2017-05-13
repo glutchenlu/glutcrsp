@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xnzygxpt.goods.dao.dao.GoodsMapper">
+
+	<insert id="add" parameterType="Goods" useGeneratedKeys="true"
+		keyProperty="goodsid">
+		insert into
+		Goods(userid,classify,area,price,title,detail,keyword,source,goods_name,release_time,type,tel,telname,pic,degree)
+		values
+		(#{userid},#{classify},#{area},#{price},#{title},#{detail},#{keyword},#{source},#{goods_name},date_format(now(),'%Y-%c-%d-%H:%i:%s'),2,#{tel},#{telname},#{pic},#{degree})
+	</insert>
+	<update id="update" parameterType="Goods">
+		update Goods set
+		classify=#{classify},area=#{area},price=#{price},title=#{title},detail=#{detail},keyword=#{keyword},source=#{source},goods_name=#{goods_name},tel=#{tel},telname=#{telname},pic=#{pic},degree=#{degree}
+		where goodsid=#{goodsid}
+	</update>
+	<select id="queryByID" parameterType="int" resultType="Goods">
+		select
+		*
+		from Goods where goodsid=#{goodsid}
+	</select>
+	<delete id="del" parameterType="int">
+		delete from Goods
+		where
+		goodsid=#{goodsid}
+	</delete>
+	<select id="queryAll" resultType="Goods">
+		select
+		* from Goods
+	</select>
+	<select id="queryByClass" parameterType="string" resultType="Goods">
+		select
+		* from Goods where classify=#{classify}
+	</select>
+</mapper>

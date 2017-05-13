@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xnzygxpt.learning_data.dao.dao.LearningDataMapper">
+
+	<insert id="add" parameterType="LearningData" useGeneratedKeys="true"
+		keyProperty="learning_dataid">
+		insert into
+		Learning_Data(userid,classify,title,detail,keyword,data_name,data_time,type)
+		values
+		(#{userid},#{classify},#{title},#{detail},#{keyword},#{data_name},date_format(now(),'%Y-%c-%d
+		%h:%i:%s'),3)
+	</insert>
+	<update id="update" parameterType="LearningData">
+		update Learning_Data set
+		classify=#{classify},title=#{title},detail=#{detail},keyword=#{keyword},data_name=#{data_name}
+		where learning_dataid=#{learning_dataid}
+	</update>
+	<select id="queryByID" parameterType="int" resultType="LearningData">
+		select
+		*
+		from Learning_Data where learning_dataid=#{learning_dataid}
+	</select>
+	<delete id="del" parameterType="int">
+		delete from Learning_Data
+		where
+		learning_dataid=#{learning_dataid}
+	</delete>
+	<select id="queryAll" resultType="LearningData">
+		select
+		* from learning_data
+	</select>
+	<select id="queryByClass" parameterType="string"
+		resultType="LearningData">
+		select
+		* from LearningData where classify=#{classify}
+	</select>
+</mapper>
