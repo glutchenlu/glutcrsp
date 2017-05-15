@@ -53,7 +53,6 @@ public class GoodsController {
 	public ModelAndView queryByClass(String classify)
 			throws UnsupportedEncodingException {
 		ModelAndView modelView = new ModelAndView();
-//		classify = new String(classify.getBytes("iso-8859-1"), "utf-8");
 		Map<String, Object> resultMap = goodsservice.queryByClass(classify);
 		modelView.addObject("resultMap", resultMap);
 		return modelView;

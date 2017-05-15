@@ -17,4 +17,7 @@ public interface WorkMapper {
 	public int del(int Workid);
 
 	public List<Work> queryAll();
+
+	public List<Work> queryByIndustry(String p);
+
 }

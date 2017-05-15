@@ -17,6 +17,12 @@ public class XUserController {
 	@Autowired
 	private XUserService userService;
 
+	/**
+	 * 登录
+	 * 
+	 * @param xuser
+	 * @return
+	 */
 	@RequestMapping(value = "/login", method = { RequestMethod.POST,
 			RequestMethod.GET })
 	public ModelAndView login(XUser xuser) {
@@ -26,11 +32,32 @@ public class XUserController {
 		return modelView;
 	}
 
+	/**
+	 * 注册
+	 * 
+	 * @param xuser
+	 * @return
+	 */
 	@RequestMapping(value = "/register", method = { RequestMethod.POST,
 			RequestMethod.GET })
 	public ModelAndView register(XUser xuser) {
 		ModelAndView modelView = new ModelAndView();
 		Map<String, String> resultMap = userService.register(xuser);
+		modelView.addObject("resultMap", resultMap);
+		return modelView;
+	}
+
+	/**
+	 * 查询用户信息
+	 * 
+	 * @param userid
+	 * @return
+	 */
+	@RequestMapping(value = "/findbyid", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public ModelAndView findbyid(String userid) {
+		ModelAndView modelView = new ModelAndView();
+		Map<String, Object> resultMap = userService.findbyid(userid);
 		modelView.addObject("resultMap", resultMap);
 		return modelView;
 	}

@@ -18,6 +18,10 @@ public class WorkImpl {
 		return per.queryByID(Workid);
 	}
 
+	public List<Work> queryByIndustry(String p) {
+		return per.queryByIndustry(p);
+	}
+
 	@Transactional
 	public int add(Work p) {
 		return per.add(p);

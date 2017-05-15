@@ -10,8 +10,8 @@
 		insert into
 		Learning_Data(userid,classify,title,detail,keyword,data_name,data_time,type)
 		values
-		(#{userid},#{classify},#{title},#{detail},#{keyword},#{data_name},date_format(now(),'%Y-%c-%d
-		%h:%i:%s'),3)
+		(#{userid},#{classify},#{title},#{detail},#{keyword},#{data_name},
+		date_format(now(),'%Y-%c-%d %H:%i:%s'),3)
 	</insert>
 	<update id="update" parameterType="LearningData">
 		update Learning_Data set
@@ -32,8 +32,7 @@
 		select
 		* from learning_data
 	</select>
-	<select id="queryByClass" parameterType="string"
-		resultType="LearningData">
+	<select id="queryByClass" parameterType="string" resultType="LearningData">
 		select
 		* from LearningData where classify=#{classify}
 	</select>

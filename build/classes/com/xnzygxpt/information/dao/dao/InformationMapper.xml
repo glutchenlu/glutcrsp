@@ -10,8 +10,8 @@
 		insert into
 		Information(userid,classify,title,detail,keyword,theme,release_time,type)
 		values
-		(#{userid},#{classify},#{title},#{detail},#{keyword},#{theme},date_format(now(),'%Y-%c-%d
-		%h:%i:%s'),7)
+		(#{userid},#{classify},#{title},#{detail},#{keyword},#{theme},
+		date_format(now(),'%Y-%c-%d %H:%i:%s'),7)
 	</insert>
 	<update id="update" parameterType="Information">
 		update Information set
@@ -32,8 +32,7 @@
 		select
 		* from Information
 	</select>
-	<select id="queryByClass" parameterType="string"
-		resultType="Information">
+	<select id="queryByClass" parameterType="string" resultType="Information">
 		select
 		* from Information where classify=#{classify}
 	</select>

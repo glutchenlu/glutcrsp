@@ -9,8 +9,7 @@
 		keyProperty="collectionid">
 		insert into
 		mycollection(userid,collection_time,collection_contentid,type) values
-		(#{userid},date_format(now(),'%Y-%c-%d
-		%h:%i:%s'),#{collection_contentid},#{type})
+		(#{userid},date_format(now(),'%Y-%c-%d %H:%i:%s'),#{collection_contentid},#{type})
 	</insert>
 	<delete id="del" parameterType="int">
 		delete from mycollection

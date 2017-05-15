@@ -10,8 +10,8 @@
 		insert into
 		courier(userid,receive_time,merchant,detail,price,release_time,type)
 		values
-		(#{userid},#{receive_time},#{merchant},#{detail},#{price},date_format(now(),'%Y-%c-%d
-		%h:%i:%s'),1)
+		(#{userid},#{receive_time},#{merchant},#{detail},#{price},
+		date_format(now(),'%Y-%c-%d %H:%i:%s'),1)
 	</insert>
 	<update id="update" parameterType="Courier">
 		update courier set

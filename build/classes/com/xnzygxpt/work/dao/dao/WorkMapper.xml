@@ -32,4 +32,8 @@
 		select
 		* from Work
 	</select>
+	<select id="queryByIndustry" parameterType="string" resultType="Work">
+		select
+		* from work where industry=#{industry}
+	</select>
 </mapper>

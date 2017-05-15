@@ -10,7 +10,8 @@
 		insert into
 		Second_Goods(userid,classify,area,price,title,detail,keyword,source,Goods_name,release_time,type,tel,telname,pic,degree)
 		values
-		(#{userid},#{classify},#{area},#{price},#{title},#{detail},#{keyword},#{source},#{goods_name},date_format(now(),'%Y-%c-%d-%H:%i:%s'),4,#{tel},#{telname},#{pic},#{degree})
+		(#{userid},#{classify},#{area},#{price},#{title},#{detail},#{keyword},#{source},#{goods_name},
+		date_format(now(),'%Y-%c-%d %H:%i:%s'),4,#{tel},#{telname},#{pic},#{degree})
 	</insert>
 	<update id="update" parameterType="SecondGoods">
 		update Second_Goods set

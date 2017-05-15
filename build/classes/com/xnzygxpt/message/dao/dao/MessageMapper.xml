@@ -10,8 +10,8 @@
 		insert into
 		Message(userid,message,message_class,message_time,type)
 		values
-		(#{userid},#{message},#{message_class},date_format(now(),'%Y-%c-%d
-		%h:%i:%s'))
+		(#{userid},#{message},#{message_class},
+		date_format(now(),'%Y-%c-%d %H:%i:%s'))
 	</insert>
 	<select id="queryByID" parameterType="int" resultType="Message">
 		select
