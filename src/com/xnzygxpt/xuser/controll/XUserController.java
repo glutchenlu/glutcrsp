@@ -42,7 +42,7 @@ public class XUserController {
 			RequestMethod.GET })
 	public ModelAndView register(XUser xuser) {
 		ModelAndView modelView = new ModelAndView();
-		Map<String, String> resultMap = userService.register(xuser);
+		Map<String, Object> resultMap = userService.register(xuser);
 		modelView.addObject("resultMap", resultMap);
 		return modelView;
 	}
@@ -58,6 +58,15 @@ public class XUserController {
 	public ModelAndView findbyid(String userid) {
 		ModelAndView modelView = new ModelAndView();
 		Map<String, Object> resultMap = userService.findbyid(userid);
+		modelView.addObject("resultMap", resultMap);
+		return modelView;
+	}
+
+	@RequestMapping(value = "/userfabu", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public ModelAndView userFabu(String userid) {
+		ModelAndView modelView = new ModelAndView();
+		Map<String, Object> resultMap = userService.userFabu(userid);
 		modelView.addObject("resultMap", resultMap);
 		return modelView;
 	}

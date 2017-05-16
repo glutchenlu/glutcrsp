@@ -19,4 +19,6 @@ public interface LearningDataMapper {
 	public List<LearningData> queryAll();
 
 	public List<LearningData> queryByClass(String p);
+
+	public List<LearningData> querybyuserid(String userid);
 }

@@ -3,15 +3,14 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.xnzygxpt.TrainTicket.dao.dao.TrainTicketMapper">
+<mapper namespace="com.xnzygxpt.train_ticket.dao.dao.TrainTicketMapper">
 
 	<insert id="add" parameterType="TrainTicket" useGeneratedKeys="true"
 		keyProperty="train_ticketid">
 		insert into
-		Train_Ticket(userid,receive_time,station,detail,price,release_time,type)
+		Train_Ticket(userid,receive_time,station,detail,price,release_time,type,school)
 		values
-		(#{userid},#{receive_time},#{station},#{detail},#{price},date_format(now(),'%Y-%c-%d
-		%h:%i:%s'),5)
+		(#{userid},#{receive_time},#{station},#{detail},#{price},date_format(now(),'%Y-%c-%d %H:%i:%s'),5,#{school})
 	</insert>
 	<update id="update" parameterType="TrainTicket">
 		update Train_Ticket set
@@ -31,5 +30,10 @@
 	<select id="queryAll" resultType="TrainTicket">
 		select
 		* from Train_Ticket
+	</select>
+	<select id="querybyuserid" parameterType="string" resultType="TrainTicket">
+		select
+		* from Train_Ticket where
+		userid=#{userid}
 	</select>
 </mapper>

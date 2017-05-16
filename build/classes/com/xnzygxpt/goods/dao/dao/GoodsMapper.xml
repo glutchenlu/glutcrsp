@@ -8,10 +8,10 @@
 	<insert id="add" parameterType="Goods" useGeneratedKeys="true"
 		keyProperty="goodsid">
 		insert into
-		Goods(userid,classify,area,price,title,detail,keyword,source,goods_name,release_time,type,tel,telname,pic,degree)
+		Goods(userid,classify,area,price,title,detail,keyword,source,goods_name,release_time,type,tel,telname,pic,degree,school)
 		values
 		(#{userid},#{classify},#{area},#{price},#{title},#{detail},#{keyword},#{source},#{goods_name},
-		date_format(now(),'%Y-%c-%d %H:%i:%s'),2,#{tel},#{telname},#{pic},#{degree})
+		date_format(now(),'%Y-%c-%d %H:%i:%s'),2,#{tel},#{telname},#{pic},#{degree},#{school})
 	</insert>
 	<update id="update" parameterType="Goods">
 		update Goods set
@@ -35,5 +35,10 @@
 	<select id="queryByClass" parameterType="string" resultType="Goods">
 		select
 		* from Goods where classify=#{classify}
+	</select>
+	<select id="querybyuserid" parameterType="string" resultType="Goods">
+		select
+		* from Goods where
+		userid=#{userid}
 	</select>
 </mapper>

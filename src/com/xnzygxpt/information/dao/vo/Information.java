@@ -12,7 +12,15 @@ public class Information {
 	private String detail;
 	private String release_time;
 	private int type;
+	private String school;
 
+	public String getSchool() {
+		return school;
+	}
+
+	public void setSchool(String school) {
+		this.school = school;
+	}
 	public int getInformationid() {
 		return informationid;
 	}

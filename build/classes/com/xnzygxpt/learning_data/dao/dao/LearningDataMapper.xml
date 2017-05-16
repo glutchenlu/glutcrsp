@@ -8,10 +8,10 @@
 	<insert id="add" parameterType="LearningData" useGeneratedKeys="true"
 		keyProperty="learning_dataid">
 		insert into
-		Learning_Data(userid,classify,title,detail,keyword,data_name,data_time,type)
+		Learning_Data(userid,classify,title,detail,keyword,data_name,data_time,type,school)
 		values
 		(#{userid},#{classify},#{title},#{detail},#{keyword},#{data_name},
-		date_format(now(),'%Y-%c-%d %H:%i:%s'),3)
+		date_format(now(),'%Y-%c-%d %H:%i:%s'),3,#{school})
 	</insert>
 	<update id="update" parameterType="LearningData">
 		update Learning_Data set
@@ -34,6 +34,11 @@
 	</select>
 	<select id="queryByClass" parameterType="string" resultType="LearningData">
 		select
-		* from LearningData where classify=#{classify}
+		* from Learning_Data where classify=#{classify}
+	</select>
+	<select id="querybyuserid" parameterType="string" resultType="LearningData">
+		select
+		* from Learning_Data where
+		userid=#{userid}
 	</select>
 </mapper>

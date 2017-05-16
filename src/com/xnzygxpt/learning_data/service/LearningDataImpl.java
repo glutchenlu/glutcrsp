@@ -23,6 +23,9 @@ public class LearningDataImpl {
 		return per.add(p);
 	}
 
+	public List<LearningData> querybyuserid(String userid) {
+		return per.querybyuserid(userid);
+	}
 	@Transactional
 	public int update(LearningData p) {
 		return per.update(p);

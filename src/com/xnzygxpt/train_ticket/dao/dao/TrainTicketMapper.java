@@ -17,4 +17,6 @@ public interface TrainTicketMapper {
 	public int del(int TrainTicketid);
 
 	public List<TrainTicket> queryAll();
+
+	public List<TrainTicket> querybyuserid(String userid);
 }

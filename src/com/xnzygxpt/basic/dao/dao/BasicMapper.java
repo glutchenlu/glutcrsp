@@ -12,5 +12,7 @@ public interface BasicMapper {
 
 	public int update(Basic p);
 
+	public int updateschool(Basic p);
+
 	public int updatecredit(Basic p);
 }

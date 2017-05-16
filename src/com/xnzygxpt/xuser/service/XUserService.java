@@ -1,6 +1,8 @@
 package com.xnzygxpt.xuser.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,16 @@ import org.springframework.stereotype.Service;
 
 import com.xnzygxpt.basic.dao.vo.Basic;
 import com.xnzygxpt.basic.service.BasicImpl;
+import com.xnzygxpt.company.dao.vo.Company;
+import com.xnzygxpt.company.service.CompanyImpl;
+import com.xnzygxpt.courier.service.CourierImpl;
+import com.xnzygxpt.goods.service.GoodsImpl;
+import com.xnzygxpt.information.service.InformationImpl;
+import com.xnzygxpt.learning_data.service.LearningDataImpl;
+import com.xnzygxpt.second_goods.service.SecondGoodsImpl;
+import com.xnzygxpt.train_ticket.service.TrainTicketImpl;
+import com.xnzygxpt.work.dao.vo.Work;
+import com.xnzygxpt.work.service.WorkImpl;
 import com.xnzygxpt.xuser.dao.vo.XUser;
 
 /**
@@ -23,6 +35,22 @@ public class XUserService {
 
 	@Autowired
 	private BasicImpl basicImpl;
+	@Autowired
+	private GoodsImpl goodsImpl;
+	@Autowired
+	private SecondGoodsImpl secondGoodsImpl;
+	@Autowired
+	private InformationImpl informationImpl;
+	@Autowired
+	private TrainTicketImpl trainTicketImpl;
+	@Autowired
+	private WorkImpl workImpl;
+	@Autowired
+	private CourierImpl courierImpl;
+	@Autowired
+	private LearningDataImpl learningDataImpl;
+	@Autowired
+	private CompanyImpl companyImpl;
 
 	/**
 	 * 登录
@@ -63,17 +91,18 @@ public class XUserService {
 	 *            注册用户的信息
 	 * @return 执行信息
 	 */
-	public Map<String, String> register(XUser xuser) {
-		Map<String, String> hmap = new HashMap<String, String>();
+	public Map<String, Object> register(XUser xuser) {
+		Map<String, Object> hmap = new HashMap<String, Object>();
 		int returnCode = 0;
 		System.out.println("userid:" + xuser.getUserid());
 		String returnString = "帐号已经存在！";
+		XUser localUser = userImpl.queryByID(xuser.getUserid());
 		if (xuser.getUserid() != null && !"".equals(xuser.getUserid())) {
-			XUser localUser = userImpl.queryByID(xuser.getUserid());
 			if (localUser != null) {
 				System.out.println("帐号已经存在！");
 			} else {
-				userImpl.add(xuser);
+				localUser = userImpl.add(xuser);
+				hmap.put("returnUser", localUser);
 				returnCode = 1;
 				returnString = "注册成功！";
 			}
@@ -114,6 +143,43 @@ public class XUserService {
 		hmap.put("returnCode", returnCode + "");
 		hmap.put("returnString", returnString);
 		hmap.put("returnBean", beanMap);
+		return hmap;
+	}
+
+	public Map<String, Object> userFabu(String userid) {
+		Map<String, Object> hmap = new HashMap<String, Object>();
+		Map<String, Object> listMap = new HashMap<String, Object>();
+		String returnString = "查询失败！";
+		int returnCode = 0;
+		try {
+			List<Work> wlist = workImpl.querybyuserid(userid);
+			List<Company> clist = new ArrayList<Company>();
+
+			for (Work work : wlist) {
+				Company company = new Company();
+				company = companyImpl.queryByName(work.getSource());
+				clist.add(company);
+			}
+
+			listMap.put("goods", goodsImpl.querybyuserid(userid));
+			listMap.put("secondGoods", secondGoodsImpl.querybyuserid(userid));
+			listMap.put("information", informationImpl.querybyuserid(userid));
+			listMap.put("trainTicket", trainTicketImpl.querybyuserid(userid));
+			listMap.put("work", wlist);
+			listMap.put("company", clist);
+			listMap.put("courier", courierImpl.querybyuserid(userid));
+			listMap.put("learningData", learningDataImpl.querybyuserid(userid));
+
+			returnString = "查询成功！";
+			returnCode = 1;
+		} catch (Exception e) {
+			returnString = "查询失败！";
+			returnCode = 0;
+			e.printStackTrace();
+		}
+		hmap.put("returnCode", returnCode + "");
+		hmap.put("returnString", returnString);
+		hmap.put("returnBean", listMap);
 		return hmap;
 	}
 }

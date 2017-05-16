@@ -8,8 +8,7 @@
 	<insert id="add" parameterType="XUser">
 		insert into
 		user(userid,password,datingid,basicid,settingid,status,crtime) values
-		(#{userid},#{password},#{datingid},#{basicid},#{settingid},0,date_format(now(),'%Y-%c-%d
-		%h:%i:%s'))
+		(#{userid},#{password},#{datingid},#{basicid},#{settingid},0,date_format(now(),'%Y-%c-%d %H:%i:%s'))
 	</insert>
 	<update id="updateStatus" parameterType="XUser">
 		update user set

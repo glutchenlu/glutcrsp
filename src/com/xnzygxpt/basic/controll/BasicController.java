@@ -55,4 +55,13 @@ public class BasicController {
 		modelView.addObject("resultMap", resultMap);
 		return modelView;
 	}
+
+	@RequestMapping(value = "/updateschool", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public ModelAndView updateschool(Basic basic) {
+		ModelAndView modelView = new ModelAndView();
+		Map<String, Object> resultMap = basicservice.updateschool(basic);
+		modelView.addObject("resultMap", resultMap);
+		return modelView;
+	}
 }

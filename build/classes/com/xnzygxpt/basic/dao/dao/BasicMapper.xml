@@ -21,6 +21,11 @@
 		school=#{school},name=#{name},sex=#{sex},tel=#{tel},birthday=#{birthday},picture=#{picture},email=#{email},stuid=#{stuid},school=#{school}
 		where basicid=#{basicid}
 	</update>
+	<update id="updateschool" parameterType="Basic">
+		update basic set
+		school=#{school},name=#{name},picture=#{picture},email=#{email}
+		where basicid=#{basicid}
+	</update>
 	<select id="queryByID" parameterType="int" resultType="Basic">
 		select
 		*

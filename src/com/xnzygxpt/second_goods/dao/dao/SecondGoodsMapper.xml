@@ -8,10 +8,10 @@
 	<insert id="add" parameterType="SecondGoods" useGeneratedKeys="true"
 		keyProperty="second_goodsid">
 		insert into
-		Second_Goods(userid,classify,area,price,title,detail,keyword,source,Goods_name,release_time,type,tel,telname,pic,degree)
+		Second_Goods(userid,classify,area,price,title,detail,keyword,source,Goods_name,release_time,type,tel,telname,pic,degree,school)
 		values
 		(#{userid},#{classify},#{area},#{price},#{title},#{detail},#{keyword},#{source},#{goods_name},
-		date_format(now(),'%Y-%c-%d %H:%i:%s'),4,#{tel},#{telname},#{pic},#{degree})
+		date_format(now(),'%Y-%c-%d %H:%i:%s'),4,#{tel},#{telname},#{pic},#{degree},#{school})
 	</insert>
 	<update id="update" parameterType="SecondGoods">
 		update Second_Goods set
@@ -36,5 +36,10 @@
 		resultType="SecondGoods">
 		select
 		* from Second_Goods where classify=#{classify}
+	</select>
+	<select id="querybyuserid" parameterType="string" resultType="SecondGoods">
+		select
+		* from Second_Goods where
+		userid=#{userid}
 	</select>
 </mapper>

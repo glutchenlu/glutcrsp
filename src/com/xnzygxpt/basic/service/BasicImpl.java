@@ -27,6 +27,11 @@ public class BasicImpl {
 	}
 
 	@Transactional
+	public int updateschool(Basic p) {
+		return per.updateschool(p);
+	}
+
+	@Transactional
 	public int updatecredit(Basic p) {
 		return per.updatecredit(p);
 	}

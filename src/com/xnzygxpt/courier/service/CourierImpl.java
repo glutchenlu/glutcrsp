@@ -32,6 +32,10 @@ public class CourierImpl {
 		return per.queryAll();
 	}
 
+	public List<Courier> querybyuserid(String userid) {
+		return per.querybyuserid(userid);
+	}
+
 	@Transactional
 	public int del(int courierid) {
 		return per.del(courierid);

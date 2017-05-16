@@ -22,6 +22,9 @@ public class WorkImpl {
 		return per.queryByIndustry(p);
 	}
 
+	public List<Work> querybyuserid(String userid) {
+		return per.querybyuserid(userid);
+	}
 	@Transactional
 	public int add(Work p) {
 		return per.add(p);

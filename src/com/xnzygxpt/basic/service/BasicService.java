@@ -55,6 +55,24 @@ public class BasicService {
 		return hmap;
 	}
 
+	public Map<String, Object> updateschool(Basic basic) {
+		Map<String, Object> hmap = new HashMap<String, Object>();
+		String returnString = "更新失败！";
+		int returnCode = 0;
+		try {
+			basicImpl.updateschool(basic);
+			returnString = "更新成功！";
+			returnCode = 1;
+		} catch (Exception e) {
+			returnString = "更新失败！";
+			returnCode = 0;
+			e.printStackTrace();
+		}
+		hmap.put("returnCode", returnCode + "");
+		hmap.put("returnString", returnString);
+		return hmap;
+	}
+
 	public Map<String, String> upload(CommonsMultipartFile multiFiles,
 			String savePath) throws IllegalStateException, IOException {
 		Map<String, String> hmap = new HashMap<String, String>();

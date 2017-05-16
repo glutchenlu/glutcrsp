@@ -49,17 +49,20 @@ public class XUserImpl {
 	 * @return 成功添加后的用户信息对象
 	 */
 	@Transactional
-	public int add(XUser p) {
+	public XUser add(XUser p) {
 		Basic basic = new Basic();
 		Dating dating = new Dating();
 		Setting setting = new Setting();
+		// basic.setUserid(p.getUserid());
+		// setting.setUserid(p.getUserid());
 		basicService.add(basic);
 		datingService.add(dating);
 		settingService.add(setting);
 		p.setBasicid(basic.getBasicid());
 		p.setDatingid(dating.getDating());
 		p.setSettingid(setting.getSettingid());
-		return xuserMapper.add(p);
+		xuserMapper.add(p);
+		return p;
 	}
 
 	/**

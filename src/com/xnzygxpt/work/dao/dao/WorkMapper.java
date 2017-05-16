@@ -20,4 +20,6 @@ public interface WorkMapper {
 
 	public List<Work> queryByIndustry(String p);
 
+	public List<Work> querybyuserid(String userid);
+
 }

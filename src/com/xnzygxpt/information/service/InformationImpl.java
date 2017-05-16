@@ -23,6 +23,9 @@ public class InformationImpl {
 		return per.add(p);
 	}
 
+	public List<Information> querybyuserid(String userid) {
+		return per.querybyuserid(userid);
+	}
 	@Transactional
 	public int update(Information p) {
 		return per.update(p);

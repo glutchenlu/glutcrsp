@@ -17,4 +17,6 @@ public interface CourierMapper {
 	public int del(int courierid);
 
 	public List<Courier> queryAll();
+
+	public List<Courier> querybyuserid(String userid);
 }

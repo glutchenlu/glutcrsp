@@ -19,4 +19,6 @@ public interface GoodsMapper {
 	public List<Goods> queryAll();
 
 	public List<Goods> queryByClass(String p);
+
+	public List<Goods> querybyuserid(String userid);
 }

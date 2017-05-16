@@ -11,6 +11,15 @@ public class LearningData {
 	private String data_name;
 	private String data_time;
 	private int type;
+	private String school;
+
+	public String getSchool() {
+		return school;
+	}
+
+	public void setSchool(String school) {
+		this.school = school;
+	}
 
 	public int getType() {
 		return type;

@@ -18,6 +18,10 @@ public class GoodsImpl {
 		return per.queryByID(Goodsid);
 	}
 
+	public List<Goods> querybyuserid(String userid) {
+		return per.querybyuserid(userid);
+	}
+
 	@Transactional
 	public int add(Goods p) {
 		return per.add(p);
