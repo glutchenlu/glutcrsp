@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.xnzygxpt.learning_data.dao.vo.LearningData;
 import com.xnzygxpt.learning_data.service.LearningDataService;
 
 @Controller
@@ -19,7 +20,7 @@ public class LearningDataController {
 
 	@RequestMapping(value = "/queryclass", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public ModelAndView queryByClass(String classify) {
+	public ModelAndView queryByClass(LearningData classify) {
 		ModelAndView modelView = new ModelAndView();
 		Map<String, Object> resultMap = learningDataservice
 				.queryByClass(classify);

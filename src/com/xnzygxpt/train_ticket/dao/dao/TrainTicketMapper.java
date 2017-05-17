@@ -14,9 +14,13 @@ public interface TrainTicketMapper {
 
 	public int update(TrainTicket p);
 
+	public int updatestate(TrainTicket p);
+
 	public int del(int TrainTicketid);
 
 	public List<TrainTicket> queryAll();
 
 	public List<TrainTicket> querybyuserid(String userid);
+
+	public List<TrainTicket> querybyschool(TrainTicket p);
 }

@@ -15,7 +15,7 @@ public class InformationService {
 	@Autowired
 	private InformationImpl imformationImpl;
 
-	public Map<String, Object> queryByClass(String classify) {
+	public Map<String, Object> queryByClass(Information classify) {
 		Map<String, Object> hmap = new HashMap<String, Object>();
 		List<Information> glist = new ArrayList<Information>();
 		String returnString = "查询失败！";

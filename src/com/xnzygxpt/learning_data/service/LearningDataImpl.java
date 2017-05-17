@@ -31,7 +31,7 @@ public class LearningDataImpl {
 		return per.update(p);
 	}
 
-	public List<LearningData> queryByclass(String p) {
+	public List<LearningData> queryByclass(LearningData p) {
 		return per.queryByClass(p);
 	}
 

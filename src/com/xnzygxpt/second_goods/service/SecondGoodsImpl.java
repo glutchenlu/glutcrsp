@@ -31,7 +31,7 @@ public class SecondGoodsImpl {
 		return per.update(p);
 	}
 
-	public List<SecondGoods> queryByclass(String p) {
+	public List<SecondGoods> queryByclass(SecondGoods p) {
 		return per.queryByClass(p);
 	}
 

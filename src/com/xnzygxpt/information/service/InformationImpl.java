@@ -35,7 +35,7 @@ public class InformationImpl {
 		return per.queryAll();
 	}
 
-	public List<Information> queryByclass(String p) {
+	public List<Information> queryByclass(Information p) {
 		return per.queryByClass(p);
 	}
 

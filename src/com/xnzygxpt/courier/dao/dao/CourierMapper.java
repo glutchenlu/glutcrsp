@@ -14,9 +14,13 @@ public interface CourierMapper {
 
 	public int update(Courier p);
 
+	public int updatestate(Courier p);
+
 	public int del(int courierid);
 
 	public List<Courier> queryAll();
 
 	public List<Courier> querybyuserid(String userid);
+
+	public List<Courier> querybyschool(Courier p);
 }

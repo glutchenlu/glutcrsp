@@ -26,10 +26,17 @@ public class TrainTicketImpl {
 	public List<TrainTicket> querybyuserid(String userid) {
 		return per.querybyuserid(userid);
 	}
-
+	public List<TrainTicket> queryByclass(TrainTicket TrainTicket) {
+		return per.querybyschool(TrainTicket);
+	}
 	@Transactional
 	public int update(TrainTicket p) {
 		return per.update(p);
+	}
+
+	@Transactional
+	public int updatestate(TrainTicket p) {
+		return per.updatestate(p);
 	}
 
 	public List<TrainTicket> queryAll() {

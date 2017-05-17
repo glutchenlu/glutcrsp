@@ -18,7 +18,7 @@ public interface InformationMapper {
 
 	public List<Information> queryAll();
 
-	public List<Information> queryByClass(String p);
+	public List<Information> queryByClass(Information p);
 
 	public List<Information> querybyuserid(String userid);
 }

@@ -73,13 +73,13 @@ public class GoodsService {
 		return hmap;
 	}
 
-	public Map<String, Object> queryByClass(String classify) {
+	public Map<String, Object> queryByClass(Goods ogoods) {
 		Map<String, Object> hmap = new HashMap<String, Object>();
 		List<Goods> glist = new ArrayList<Goods>();
 		String returnString = "查询失败！";
 		int returnCode = 0;
 		try {
-			glist = goodsImpl.queryByclass(classify);
+			glist = goodsImpl.queryByclass(ogoods);
 			returnString = "查询成功！";
 			returnCode = 1;
 		} catch (Exception e) {
@@ -87,8 +87,6 @@ public class GoodsService {
 			returnCode = 0;
 			e.printStackTrace();
 		}
-		// Map<Object, Object> mappedMovies = glist.stream().collect(
-		// Collectors.toMap(Goods::getRank, (p) -> p));
 		hmap.put("returnCode", returnCode + "");
 		hmap.put("returnString", returnString);
 		hmap.put("resultBean", glist);

@@ -23,9 +23,18 @@ public class CourierImpl {
 		return per.add(p);
 	}
 
+	public List<Courier> queryByclass(Courier Courier) {
+		return per.querybyschool(Courier);
+	}
+
 	@Transactional
 	public int update(Courier p) {
 		return per.update(p);
+	}
+
+	@Transactional
+	public int updatestate(Courier p) {
+		return per.updatestate(p);
 	}
 
 	public List<Courier> queryAll() {

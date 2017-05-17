@@ -31,9 +31,9 @@
 		select
 		* from Work
 	</select>
-	<select id="queryByIndustry" parameterType="string" resultType="Work">
+	<select id="queryByIndustry" parameterType="Work" resultType="Work">
 		select
-		* from work where industry=#{industry}
+		* from work where industry=#{industry} and school=#{school}
 	</select>
 	<select id="querybyuserid" parameterType="string" resultType="Work">
 		select

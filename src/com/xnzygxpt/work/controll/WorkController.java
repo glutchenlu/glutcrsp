@@ -30,10 +30,10 @@ public class WorkController {
 
 	@RequestMapping(value = "/querybyindustry", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public ModelAndView queryByIndustry(String industry)
+	public ModelAndView queryByIndustry(Work work)
 			throws UnsupportedEncodingException {
 		ModelAndView modelView = new ModelAndView();
-		Map<String, Object> resultMap = workservice.queryByIndustry(industry);
+		Map<String, Object> resultMap = workservice.queryByIndustry(work);
 		modelView.addObject("resultMap", resultMap);
 		return modelView;
 	}

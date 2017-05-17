@@ -74,7 +74,7 @@ public class SecondGoodsService {
 		return hmap;
 	}
 
-	public Map<String, Object> queryByClass(String classify) {
+	public Map<String, Object> queryByClass(SecondGoods classify) {
 		Map<String, Object> hmap = new HashMap<String, Object>();
 		List<SecondGoods> glist = new ArrayList<SecondGoods>();
 		String returnString = "查询失败！";

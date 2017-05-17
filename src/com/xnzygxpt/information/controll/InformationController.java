@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.xnzygxpt.information.dao.vo.Information;
 import com.xnzygxpt.information.service.InformationService;
 
 @Controller
@@ -19,7 +20,7 @@ public class InformationController {
 
 	@RequestMapping(value = "/queryclass", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public ModelAndView queryByClass(String classify) {
+	public ModelAndView queryByClass(Information classify) {
 		ModelAndView modelView = new ModelAndView();
 		Map<String, Object> resultMap = informationservice
 				.queryByClass(classify);

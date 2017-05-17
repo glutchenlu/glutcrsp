@@ -37,14 +37,14 @@ public class WorkService {
 		return hmap;
 	}
 
-	public Map<String, Object> queryByIndustry(String industry) {
+	public Map<String, Object> queryByIndustry(Work owork) {
 		Map<String, Object> hmap = new HashMap<String, Object>();
 		List<Work> wlist = new ArrayList<Work>();
 		List<Company> clist = new ArrayList<Company>();
 		String returnString = "查询失败！";
 		int returnCode = 0;
 		try {
-			wlist = workImpl.queryByIndustry(industry);
+			wlist = workImpl.queryByIndustry(owork);
 			for (Work work : wlist) {
 				Company company = new Company();
 				company = companyImpl.queryByName(work.getSource());

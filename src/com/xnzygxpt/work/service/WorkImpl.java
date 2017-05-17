@@ -18,8 +18,8 @@ public class WorkImpl {
 		return per.queryByID(Workid);
 	}
 
-	public List<Work> queryByIndustry(String p) {
-		return per.queryByIndustry(p);
+	public List<Work> queryByIndustry(Work work) {
+		return per.queryByIndustry(work);
 	}
 
 	public List<Work> querybyuserid(String userid) {

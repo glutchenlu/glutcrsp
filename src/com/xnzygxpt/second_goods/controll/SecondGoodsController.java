@@ -50,7 +50,7 @@ public class SecondGoodsController {
 
 	@RequestMapping(value = "/queryclass", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public ModelAndView queryByClass(String classify) {
+	public ModelAndView queryByClass(SecondGoods classify) {
 		ModelAndView modelView = new ModelAndView();
 		Map<String, Object> resultMap = secondGoodsservice
 				.queryByClass(classify);

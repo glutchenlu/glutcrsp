@@ -15,7 +15,7 @@ public class LearningDataService {
 	@Autowired
 	private LearningDataImpl learningDataImpl;
 
-	public Map<String, Object> queryByClass(String classify) {
+	public Map<String, Object> queryByClass(LearningData classify) {
 		Map<String, Object> hmap = new HashMap<String, Object>();
 		List<LearningData> glist = new ArrayList<LearningData>();
 		String returnString = "查询失败！";

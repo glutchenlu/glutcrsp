@@ -8,10 +8,10 @@
 	<insert id="add" parameterType="Courier" useGeneratedKeys="true"
 		keyProperty="courierid">
 		insert into
-		courier(userid,receive_time,merchant,detail,price,release_time,type,school)
+		courier(userid,receive_time,merchant,detail,price,release_time,type,school,state,degree,area)
 		values
 		(#{userid},#{receive_time},#{merchant},#{detail},#{price},
-		date_format(now(),'%Y-%c-%d %H:%i:%s'),1,#{school})
+		date_format(now(),'%Y-%c-%d %H:%i:%s'),1,#{school},0,#{degree},#{area})
 	</insert>
 	<update id="update" parameterType="Courier">
 		update courier set
@@ -36,5 +36,14 @@
 		select
 		* from Courier where
 		userid=#{userid}
+	</select>
+	<update id="updatestate" parameterType="Courier">
+		update courier set
+		state=#{state}
+		where courierid=#{courierid}
+	</update>
+	<select id="querybyschool" parameterType="Courier" resultType="Courier">
+		select
+		* from Courier where school=#{school}
 	</select>
 </mapper>

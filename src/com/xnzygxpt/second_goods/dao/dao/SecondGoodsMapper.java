@@ -18,7 +18,7 @@ public interface SecondGoodsMapper {
 
 	public List<SecondGoods> queryAll();
 
-	public List<SecondGoods> queryByClass(String p);
+	public List<SecondGoods> queryByClass(SecondGoods p);
 
 	public List<SecondGoods> querybyuserid(String userid);
 }

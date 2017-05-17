@@ -8,9 +8,10 @@
 	<insert id="add" parameterType="TrainTicket" useGeneratedKeys="true"
 		keyProperty="train_ticketid">
 		insert into
-		Train_Ticket(userid,receive_time,station,detail,price,release_time,type,school)
+		Train_Ticket(userid,receive_time,station,detail,price,release_time,type,school,state,degree,area)
 		values
-		(#{userid},#{receive_time},#{station},#{detail},#{price},date_format(now(),'%Y-%c-%d %H:%i:%s'),5,#{school})
+		(#{userid},#{receive_time},#{station},#{detail},#{price}
+		,date_format(now(),'%Y-%c-%d %H:%i:%s'),5,#{school},0,#{degree},#{area})
 	</insert>
 	<update id="update" parameterType="TrainTicket">
 		update Train_Ticket set
@@ -35,5 +36,14 @@
 		select
 		* from Train_Ticket where
 		userid=#{userid}
+	</select>
+	<update id="updatestate" parameterType="TrainTicket">
+		update Train_Ticket set
+		state=#{state}
+		where train_ticketid=#{train_ticketid}
+	</update>
+	<select id="querybyschool" parameterType="TrainTicket" resultType="TrainTicket">
+		select
+		* from Train_Ticket where school=#{school}
 	</select>
 </mapper>

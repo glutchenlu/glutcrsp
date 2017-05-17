@@ -32,9 +32,9 @@
 		select
 		* from learning_data
 	</select>
-	<select id="queryByClass" parameterType="string" resultType="LearningData">
+	<select id="queryByClass" parameterType="LearningData" resultType="LearningData">
 		select
-		* from Learning_Data where classify=#{classify}
+		* from Learning_Data where classify=#{classify} and school=#{school}
 	</select>
 	<select id="querybyuserid" parameterType="string" resultType="LearningData">
 		select

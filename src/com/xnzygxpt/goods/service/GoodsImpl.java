@@ -36,8 +36,8 @@ public class GoodsImpl {
 		return per.queryAll();
 	}
 
-	public List<Goods> queryByclass(String p) {
-		return per.queryByClass(p);
+	public List<Goods> queryByclass(Goods goods) {
+		return per.queryByClass(goods);
 	}
 
 	@Transactional

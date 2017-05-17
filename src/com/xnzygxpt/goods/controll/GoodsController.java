@@ -50,10 +50,10 @@ public class GoodsController {
 
 	@RequestMapping(value = "/queryclass", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public ModelAndView queryByClass(String classify)
+	public ModelAndView queryByClass(Goods goods)
 			throws UnsupportedEncodingException {
 		ModelAndView modelView = new ModelAndView();
-		Map<String, Object> resultMap = goodsservice.queryByClass(classify);
+		Map<String, Object> resultMap = goodsservice.queryByClass(goods);
 		modelView.addObject("resultMap", resultMap);
 		return modelView;
 	}

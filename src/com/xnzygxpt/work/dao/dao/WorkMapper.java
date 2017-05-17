@@ -18,7 +18,7 @@ public interface WorkMapper {
 
 	public List<Work> queryAll();
 
-	public List<Work> queryByIndustry(String p);
+	public List<Work> queryByIndustry(Work work);
 
 	public List<Work> querybyuserid(String userid);
 
