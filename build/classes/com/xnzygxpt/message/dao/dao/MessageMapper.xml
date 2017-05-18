@@ -11,7 +11,7 @@
 		Message(userid,message,message_class,message_time,type)
 		values
 		(#{userid},#{message},#{message_class},
-		date_format(now(),'%Y-%c-%d %H:%i:%s'))
+		date_format(now(),'%Y-%m-%d %H:%i:%s'))
 	</insert>
 	<select id="queryByID" parameterType="int" resultType="Message">
 		select
@@ -26,5 +26,13 @@
 	<select id="queryAll" resultType="Message">
 		select
 		* from Message
+	</select>
+	<select id="querybymessage" resultType="int" parameterType="Message">
+		select
+		count(*) from Message where userid=#{userid} and message_time >=#{message_time}
+	</select>
+	<select id="querybyuser" resultType="Message" parameterType="Message">
+		select
+		* from Message where userid=#{userid}
 	</select>
 </mapper>

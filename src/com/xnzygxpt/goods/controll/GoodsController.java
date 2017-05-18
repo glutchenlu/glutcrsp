@@ -1,7 +1,6 @@
 package com.xnzygxpt.goods.controll;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -50,8 +49,7 @@ public class GoodsController {
 
 	@RequestMapping(value = "/queryclass", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public ModelAndView queryByClass(Goods goods)
-			throws UnsupportedEncodingException {
+	public ModelAndView queryByClass(Goods goods) {
 		ModelAndView modelView = new ModelAndView();
 		Map<String, Object> resultMap = goodsservice.queryByClass(goods);
 		modelView.addObject("resultMap", resultMap);

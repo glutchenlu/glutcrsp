@@ -1,6 +1,5 @@
 package com.xnzygxpt.train_ticket.controll;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +29,7 @@ public class TrainTicketController {
 
 	@RequestMapping(value = "/querybyschool", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public ModelAndView querybyschool(TrainTicket trainTicket)
-			throws UnsupportedEncodingException {
+	public ModelAndView querybyschool(TrainTicket trainTicket) {
 		ModelAndView modelView = new ModelAndView();
 		Map<String, Object> resultMap = trainTicketservice
 				.queryBySchool(trainTicket);

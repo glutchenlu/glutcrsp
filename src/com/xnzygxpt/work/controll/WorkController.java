@@ -1,6 +1,5 @@
 package com.xnzygxpt.work.controll;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +29,7 @@ public class WorkController {
 
 	@RequestMapping(value = "/querybyindustry", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public ModelAndView queryByIndustry(Work work)
-			throws UnsupportedEncodingException {
+	public ModelAndView queryByIndustry(Work work) {
 		ModelAndView modelView = new ModelAndView();
 		Map<String, Object> resultMap = workservice.queryByIndustry(work);
 		modelView.addObject("resultMap", resultMap);

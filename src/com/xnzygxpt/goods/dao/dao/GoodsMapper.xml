@@ -11,7 +11,7 @@
 		Goods(userid,classify,area,price,title,detail,keyword,source,goods_name,release_time,type,tel,telname,pic,degree,school)
 		values
 		(#{userid},#{classify},#{area},#{price},#{title},#{detail},#{keyword},#{source},#{goods_name},
-		date_format(now(),'%Y-%c-%d %H:%i:%s'),2,#{tel},#{telname},#{pic},#{degree},#{school})
+		date_format(now(),'%Y-%m-%d %H:%i:%s'),2,#{tel},#{telname},#{pic},#{degree},#{school})
 	</insert>
 	<update id="update" parameterType="Goods">
 		update Goods set

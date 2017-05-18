@@ -1,6 +1,5 @@
 package com.xnzygxpt.courier.controll;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +29,7 @@ public class CourierController {
 
 	@RequestMapping(value = "/querybyschool", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public ModelAndView querybyschool(Courier courier)
-			throws UnsupportedEncodingException {
+	public ModelAndView querybyschool(Courier courier) {
 		ModelAndView modelView = new ModelAndView();
 		Map<String, Object> resultMap = courierservice.queryBySchool(courier);
 		modelView.addObject("resultMap", resultMap);

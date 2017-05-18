@@ -11,7 +11,7 @@
 		Resume(userid,sex,birth_year,education,picture,exp_salary,exp_area,describe,tel,name,exp_position,work_year,write_time)
 		values
 		(#{userid},#{sex},#{birth_year},#{education},#{picture},#{exp_salary},#{exp_area},#{describe},#{tel},#{name},#{exp_position},#{work_year},
-		date_format(now(),'%Y-%c-%d %H:%i:%s'))
+		date_format(now(),'%Y-%m-%d %H:%i:%s'))
 	</insert>
 	<update id="update" parameterType="Resume">
 		update Resume set

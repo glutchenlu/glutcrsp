@@ -11,7 +11,7 @@
 		Information(userid,classify,title,detail,keyword,theme,release_time,type,school)
 		values
 		(#{userid},#{classify},#{title},#{detail},#{keyword},#{theme},
-		date_format(now(),'%Y-%c-%d %H:%i:%s'),7,#{school})
+		date_format(now(),'%Y-%m-%d %H:%i:%s'),7,#{school})
 	</insert>
 	<update id="update" parameterType="Information">
 		update Information set

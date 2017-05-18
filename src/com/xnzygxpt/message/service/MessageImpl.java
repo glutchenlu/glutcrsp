@@ -27,6 +27,14 @@ public class MessageImpl {
 		return per.queryAll();
 	}
 
+	public List<Message> querybyuser(Message p) {
+		return per.querybyuser(p);
+	}
+
+	public int querybymessage(Message p) {
+		return per.querybymessage(p);
+	}
+
 	@Transactional
 	public int del(int Messageid) {
 		return per.del(Messageid);

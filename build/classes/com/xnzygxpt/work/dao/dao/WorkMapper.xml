@@ -10,7 +10,7 @@
 		insert into
 		Work(userid,classify,keyword,title,work_area,welfare,detail,salary,education,source,experience,position,release_time,type,count,tel,industry,school)
 		values
-		(#{userid},#{classify},#{keyword},#{title},#{work_area},#{welfare},#{detail},#{salary},#{education},#{source},#{experience},#{position},date_format(now(),'%Y-%c-%d %H:%i:%s'),6,#{count},#{tel},#{industry},#{school})
+		(#{userid},#{classify},#{keyword},#{title},#{work_area},#{welfare},#{detail},#{salary},#{education},#{source},#{experience},#{position},date_format(now(),'%Y-%m-%d %H:%i:%s'),6,#{count},#{tel},#{industry},#{school})
 	</insert>
 	<update id="update" parameterType="Work">
 		update Work set

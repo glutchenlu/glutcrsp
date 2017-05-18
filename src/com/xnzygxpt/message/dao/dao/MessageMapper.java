@@ -15,4 +15,8 @@ public interface MessageMapper {
 	public int del(int Messageid);
 
 	public List<Message> queryAll();
+
+	public int querybymessage(Message p);
+
+	public List<Message> querybyuser(Message p);
 }

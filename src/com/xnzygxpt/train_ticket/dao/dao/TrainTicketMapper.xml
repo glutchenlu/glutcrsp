@@ -11,7 +11,7 @@
 		Train_Ticket(userid,receive_time,station,detail,price,release_time,type,school,state,degree,area)
 		values
 		(#{userid},#{receive_time},#{station},#{detail},#{price}
-		,date_format(now(),'%Y-%c-%d %H:%i:%s'),5,#{school},0,#{degree},#{area})
+		,date_format(now(),'%Y-%m-%d %H:%i:%s'),5,#{school},0,#{degree},#{area})
 	</insert>
 	<update id="update" parameterType="TrainTicket">
 		update Train_Ticket set

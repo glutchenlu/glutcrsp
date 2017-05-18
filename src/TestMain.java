@@ -1,4 +1,6 @@
 import java.lang.reflect.InvocationTargetException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -24,6 +26,11 @@ public class TestMain {
 		} catch (NoSuchMethodException e) {
 			e.printStackTrace();
 		}
+		String nowTime = "";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date now = new Date();
+		nowTime = sdf.format(now);
+		System.out.println(nowTime);
 	}
 
 }

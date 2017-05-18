@@ -1,6 +1,5 @@
 package com.xnzygxpt.message.dao.vo;
 
-
 public class Message {
 
 	private int messageid;
@@ -8,6 +7,33 @@ public class Message {
 	private String message;
 	private String message_class;
 	private String message_time;
+	private int type;
+	private int serviceid;
+	private int count;
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	public int getServiceid() {
+		return serviceid;
+	}
+
+	public void setServiceid(int serviceid) {
+		this.serviceid = serviceid;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
 
 	public int getMessageid() {
 		return messageid;

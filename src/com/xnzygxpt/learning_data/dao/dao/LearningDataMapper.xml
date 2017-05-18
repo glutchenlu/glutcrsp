@@ -11,7 +11,7 @@
 		Learning_Data(userid,classify,title,detail,keyword,data_name,data_time,type,school)
 		values
 		(#{userid},#{classify},#{title},#{detail},#{keyword},#{data_name},
-		date_format(now(),'%Y-%c-%d %H:%i:%s'),3,#{school})
+		date_format(now(),'%Y-%m-%d %H:%i:%s'),3,#{school})
 	</insert>
 	<update id="update" parameterType="LearningData">
 		update Learning_Data set
