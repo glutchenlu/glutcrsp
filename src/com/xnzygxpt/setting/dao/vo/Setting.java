@@ -3,26 +3,39 @@ package com.xnzygxpt.setting.dao.vo;
 public class Setting {
 
 	private int settingid;
-	private String userid;
-	private String content;
+	private String tongzhi;
+	private String tanchuang;
+	private String delay;
+
+	public String getDelay() {
+		return delay;
+	}
+
+	public void setDelay(String delay) {
+		this.delay = delay;
+	}
+
 	public int getSettingid() {
 		return settingid;
 	}
+
 	public void setSettingid(int settingid) {
 		this.settingid = settingid;
 	}
-	public String getUserid() {
-		return userid;
+
+	public String getTanchuang() {
+		return tanchuang;
 	}
-	public void setUserid(String userid) {
-		this.userid = userid;
+
+	public void setTanchuang(String tanchuang) {
+		this.tanchuang = tanchuang;
 	}
-	public String getContent() {
-		return content;
+
+	public String getTongzhi() {
+		return tongzhi;
 	}
-	public void setContent(String content) {
-		this.content = content;
+
+	public void setTongzhi(String tongzhi) {
+		this.tongzhi = tongzhi;
 	}
-	
-	
 }

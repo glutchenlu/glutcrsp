@@ -19,4 +19,8 @@ public interface MessageMapper {
 	public int querybymessage(Message p);
 
 	public List<Message> querybyuser(Message p);
+
+	public Message check(Message p);
+
+	public int update(Message p);
 }

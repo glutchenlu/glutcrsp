@@ -8,16 +8,26 @@
 	<insert id="add" parameterType="Message" useGeneratedKeys="true"
 		keyProperty="messageid">
 		insert into
-		Message(userid,message,message_class,message_time,type)
+		Message(userid,message,message_class,message_time,type,fromuserid,count)
 		values
-		(#{userid},#{message},#{message_class},
-		date_format(now(),'%Y-%m-%d %H:%i:%s'))
+		(#{userid},#{message},0,date_format(now(),'%Y-%m-%d %H:%i:%s'),#{type}
+		,#{fromuserid},1)
 	</insert>
 	<select id="queryByID" parameterType="int" resultType="Message">
 		select
 		*
 		from Message where messageid=#{messageid}
 	</select>
+	<select id="check" parameterType="Message" resultType="Message">
+		select
+		*
+		from Message where userid=#{userid} and type=#{type} and fromuserid=#{fromuserid}
+	</select>
+	<update id="update" parameterType="Message">
+		update Message set
+		message=#{message},message_time=date_format(now(),'%Y-%m-%d %H:%i:%s'),count=#{count} 
+		where messageid=#{messageid}
+	</update>
 	<delete id="del" parameterType="int">
 		delete from Message
 		where

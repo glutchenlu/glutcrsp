@@ -8,12 +8,12 @@
 	<insert id="add" parameterType="Setting" useGeneratedKeys="true"
 		keyProperty="settingid">
 		insert into
-		setting() values
-		()
+		setting(tongzhi,tanchuang,delay) values
+		('是','是','30',)
 	</insert>
 	<update id="update" parameterType="Setting">
 		update setting set
-		userid=#{userid},content=#{content},
+		tongzhi=#{tongzhi},tanchuang=#{tanchuang},delay=#{delay}
 		where settingid=#{settingid}
 	</update>
 	<select id="queryByID" parameterType="int" resultType="Setting">

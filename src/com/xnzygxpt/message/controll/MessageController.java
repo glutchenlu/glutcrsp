@@ -35,4 +35,22 @@ public class MessageController {
 		modelView.addObject("resultMap", resultMap);
 		return modelView;
 	}
+
+	@RequestMapping(value = "/sendmessage", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public ModelAndView sendmessage(Message message) {
+		ModelAndView modelView = new ModelAndView();
+		Map<String, Object> resultMap = messageservice.sendmessage(message);
+		modelView.addObject("resultMap", resultMap);
+		return modelView;
+	}
+
+	@RequestMapping(value = "/del", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public ModelAndView del(int messageid) {
+		ModelAndView modelView = new ModelAndView();
+		Map<String, Object> resultMap = messageservice.del(messageid);
+		modelView.addObject("resultMap", resultMap);
+		return modelView;
+	}
 }

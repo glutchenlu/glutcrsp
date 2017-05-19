@@ -18,6 +18,15 @@ public class MessageImpl {
 		return per.queryByID(Messageid);
 	}
 
+	public Message check(Message p) {
+		return per.check(p);
+	}
+
+	@Transactional
+	public int update(Message p) {
+		return per.update(p);
+	}
+
 	@Transactional
 	public int add(Message p) {
 		return per.add(p);

@@ -68,7 +68,7 @@ public class MessageService {
 			for (Message message : mlist) {
 				Basic basic = new Basic();
 				basic = basicImpl.queryByID(userImpl.queryByID(
-						message.getServiceid() + "").getBasicid());
+						message.getFromuserid()).getBasicid());
 				blist.add(basic);
 				// 若变成对应服务可修改为
 				// XUser user = new XUser();
@@ -117,6 +117,56 @@ public class MessageService {
 		hmap.put("returnString", returnString);
 		hmap.put("message", mlist);
 		hmap.put("basic", blist);
+		return hmap;
+	}
+
+	public Map<String, Object> sendmessage(Message message) {
+		Map<String, Object> hmap = new HashMap<String, Object>();
+		String returnString = "发送失败！";
+		int returnCode = 0;
+		try {
+			if (message.getFromuserid().equals(message.getUserid())) {
+				returnCode = 2;
+				returnString = "不能给自己发送消息！";
+			} else {
+				Message locMessage = messageImpl.check(message);
+				// 检查同类型记录是否存在，存在更新，不存在添加
+				if (locMessage == null) {
+					messageImpl.add(message);
+				} else if (locMessage != null) {
+					int messageCount = locMessage.getCount() + 1;
+					message.setCount(messageCount);
+					message.setMessageid(locMessage.getMessageid());
+					messageImpl.update(message);
+				}
+				returnString = "发送成功！";
+				returnCode = 1;
+			}
+		} catch (Exception e) {
+			returnString = "发送失败！";
+			returnCode = 0;
+			e.printStackTrace();
+		}
+		hmap.put("returnCode", returnCode + "");
+		hmap.put("returnString", returnString);
+		return hmap;
+	}
+
+	public Map<String, Object> del(int messageid) {
+		Map<String, Object> hmap = new HashMap<String, Object>();
+		String returnString = "删除失败！";
+		int returnCode = 0;
+		try {
+			messageImpl.del(messageid);
+			returnString = "删除成功！";
+			returnCode = 1;
+		} catch (Exception e) {
+			returnString = "删除失败！";
+			returnCode = 0;
+			e.printStackTrace();
+		}
+		hmap.put("returnCode", returnCode + "");
+		hmap.put("returnString", returnString);
 		return hmap;
 	}
 }

@@ -13,10 +13,14 @@ import com.xnzygxpt.basic.service.BasicImpl;
 import com.xnzygxpt.company.dao.vo.Company;
 import com.xnzygxpt.company.service.CompanyImpl;
 import com.xnzygxpt.courier.service.CourierImpl;
+import com.xnzygxpt.dating.dao.vo.Dating;
+import com.xnzygxpt.dating.service.DatingImpl;
 import com.xnzygxpt.goods.service.GoodsImpl;
 import com.xnzygxpt.information.service.InformationImpl;
 import com.xnzygxpt.learning_data.service.LearningDataImpl;
 import com.xnzygxpt.second_goods.service.SecondGoodsImpl;
+import com.xnzygxpt.setting.dao.vo.Setting;
+import com.xnzygxpt.setting.service.SettingImpl;
 import com.xnzygxpt.train_ticket.service.TrainTicketImpl;
 import com.xnzygxpt.work.dao.vo.Work;
 import com.xnzygxpt.work.service.WorkImpl;
@@ -35,6 +39,10 @@ public class XUserService {
 
 	@Autowired
 	private BasicImpl basicImpl;
+	@Autowired
+	private SettingImpl settingImpl;
+	@Autowired
+	private DatingImpl datingImpl;
 	@Autowired
 	private GoodsImpl goodsImpl;
 	@Autowired
@@ -126,13 +134,20 @@ public class XUserService {
 		Map<String, Object> beanMap = new HashMap<String, Object>();
 		XUser xuser = new XUser();
 		Basic basic = new Basic();
+		Setting setting = new Setting();
+		Dating dating = new Dating();
 		String returnString = "查询失败！";
 		int returnCode = 0;
 		try {
 			xuser = userImpl.queryByID(userid);
 			basic = basicImpl.queryByID(xuser.getBasicid());
+			setting = settingImpl.queryByID(xuser.getSettingid());
+			dating = datingImpl.queryByID(xuser.getDatingid());
+
 			beanMap.put("user", xuser);
 			beanMap.put("basic", basic);
+			beanMap.put("setting", setting);
+			beanMap.put("dating", dating);
 			returnString = "查询成功！";
 			returnCode = 1;
 		} catch (Exception e) {
