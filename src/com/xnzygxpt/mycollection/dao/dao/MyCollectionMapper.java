@@ -13,6 +13,10 @@ public interface MyCollectionMapper {
 	public int add(MyCollection p);
 
 	public int del(int collectionid);
-	
+
 	public List<MyCollection> queryAll();
+
+	public List<MyCollection> querybyuserid(String userid);
+
+	public int check(MyCollection p);
 }

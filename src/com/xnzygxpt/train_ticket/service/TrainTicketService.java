@@ -52,4 +52,24 @@ public class TrainTicketService {
 		hmap.put("resultBean", tlist);
 		return hmap;
 	}
+
+	public Map<String, Object> queryByID(int train_ticketid) {
+		Map<String, Object> hmap = new HashMap<String, Object>();
+		TrainTicket trainTicket = new TrainTicket();
+		String returnString = "查询失败！";
+		int returnCode = 0;
+		try {
+			trainTicket = trainTicketImpl.queryByID(train_ticketid);
+			returnString = "查询成功！";
+			returnCode = 1;
+		} catch (Exception e) {
+			returnString = "查询失败！";
+			returnCode = 0;
+			e.printStackTrace();
+		}
+		hmap.put("returnCode", returnCode + "");
+		hmap.put("returnString", returnString);
+		hmap.put("bean", trainTicket);
+		return hmap;
+	}
 }

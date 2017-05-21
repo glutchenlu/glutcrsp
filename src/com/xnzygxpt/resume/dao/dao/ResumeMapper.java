@@ -16,5 +16,7 @@ public interface ResumeMapper {
 
 	public int del(int Resumeid);
 
-	public List<Resume> queryByOne();
+	public List<Resume> queryByOne(String userid);
+
+	public int check(String userid);
 }

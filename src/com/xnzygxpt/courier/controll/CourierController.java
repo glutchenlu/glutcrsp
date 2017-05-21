@@ -35,4 +35,13 @@ public class CourierController {
 		modelView.addObject("resultMap", resultMap);
 		return modelView;
 	}
+
+	@RequestMapping(value = "/queryByID", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public ModelAndView queryByID(int courierid) {
+		ModelAndView modelView = new ModelAndView();
+		Map<String, Object> resultMap = courierservice.queryByID(courierid);
+		modelView.addObject("resultMap", resultMap);
+		return modelView;
+	}
 }

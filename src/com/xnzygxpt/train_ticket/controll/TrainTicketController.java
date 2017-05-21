@@ -36,4 +36,14 @@ public class TrainTicketController {
 		modelView.addObject("resultMap", resultMap);
 		return modelView;
 	}
+
+	@RequestMapping(value = "/queryByID", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public ModelAndView queryByID(int train_ticketid) {
+		ModelAndView modelView = new ModelAndView();
+		Map<String, Object> resultMap = trainTicketservice
+				.queryByID(train_ticketid);
+		modelView.addObject("resultMap", resultMap);
+		return modelView;
+	}
 }

@@ -18,6 +18,7 @@ import com.xnzygxpt.dating.service.DatingImpl;
 import com.xnzygxpt.goods.service.GoodsImpl;
 import com.xnzygxpt.information.service.InformationImpl;
 import com.xnzygxpt.learning_data.service.LearningDataImpl;
+import com.xnzygxpt.resume.service.ResumeImpl;
 import com.xnzygxpt.second_goods.service.SecondGoodsImpl;
 import com.xnzygxpt.setting.dao.vo.Setting;
 import com.xnzygxpt.setting.service.SettingImpl;
@@ -59,6 +60,8 @@ public class XUserService {
 	private LearningDataImpl learningDataImpl;
 	@Autowired
 	private CompanyImpl companyImpl;
+	@Autowired
+	private ResumeImpl resumeImpl;
 
 	/**
 	 * 登录
@@ -136,6 +139,7 @@ public class XUserService {
 		Basic basic = new Basic();
 		Setting setting = new Setting();
 		Dating dating = new Dating();
+		int count = 0;
 		String returnString = "查询失败！";
 		int returnCode = 0;
 		try {
@@ -143,11 +147,13 @@ public class XUserService {
 			basic = basicImpl.queryByID(xuser.getBasicid());
 			setting = settingImpl.queryByID(xuser.getSettingid());
 			dating = datingImpl.queryByID(xuser.getDatingid());
+			count = resumeImpl.check(userid);
 
 			beanMap.put("user", xuser);
 			beanMap.put("basic", basic);
 			beanMap.put("setting", setting);
 			beanMap.put("dating", dating);
+			beanMap.put("count", count);
 			returnString = "查询成功！";
 			returnCode = 1;
 		} catch (Exception e) {

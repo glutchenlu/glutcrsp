@@ -93,4 +93,24 @@ public class SecondGoodsService {
 		hmap.put("resultBean", glist);
 		return hmap;
 	}
+
+	public Map<String, Object> queryByID(int second_goodsid) {
+		Map<String, Object> hmap = new HashMap<String, Object>();
+		SecondGoods secondGoods = new SecondGoods();
+		String returnString = "查询失败！";
+		int returnCode = 0;
+		try {
+			secondGoods = secondGoodsImpl.queryByID(second_goodsid);
+			returnString = "查询成功！";
+			returnCode = 1;
+		} catch (Exception e) {
+			returnString = "查询失败！";
+			returnCode = 0;
+			e.printStackTrace();
+		}
+		hmap.put("returnCode", returnCode + "");
+		hmap.put("returnString", returnString);
+		hmap.put("bean", secondGoods);
+		return hmap;
+	}
 }

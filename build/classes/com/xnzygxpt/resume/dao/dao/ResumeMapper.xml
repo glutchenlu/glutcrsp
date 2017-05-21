@@ -7,16 +7,21 @@
 
 	<insert id="add" parameterType="Resume" useGeneratedKeys="true"
 		keyProperty="resumeid">
-		insert into
-		Resume(userid,sex,birth_year,education,picture,exp_salary,exp_area,describe,tel,name,exp_position,work_year,write_time)
+		insert into 
+		Resume(userid,sex,birth_year,education,exp_position
+		,exp_salary,exp_area,redescribe,tel,name,work_year,resumename,email
+		,write_time)
 		values
-		(#{userid},#{sex},#{birth_year},#{education},#{picture},#{exp_salary},#{exp_area},#{describe},#{tel},#{name},#{exp_position},#{work_year},
+		(#{userid},#{sex},#{birth_year},#{education}
+		,#{exp_position},#{exp_salary},#{exp_area}
+		,#{redescribe},#{tel},#{name},#{work_year},#{resumename},#{email},
 		date_format(now(),'%Y-%m-%d %H:%i:%s'))
 	</insert>
 	<update id="update" parameterType="Resume">
 		update Resume set
-		sex=#{sex},birth_year=#{birth_year},education=#{education},picture=#{picture},exp_salary=#{exp_salary},describe=#{describe},tel=#{tel},name=#{name},exp_position=#{exp_position},work_year=#{work_year},write_time=date_format(now(),'%Y-%c-%d
-		%h:%i:%s')
+		sex=#{sex},birth_year=#{birth_year},education=#{education},exp_position=#{exp_position},resumename=#{resumename}
+		,exp_salary=#{exp_salary},redescribe=#{redescribe},tel=#{tel},name=#{name},exp_area=#{exp_area},email=#{email}
+		,work_year=#{work_year},write_time=date_format(now(),'%Y-%m-%d %H:%i:%s')
 		where resumeid=#{resumeid}
 	</update>
 	<select id="queryByID" parameterType="int" resultType="Resume">
@@ -29,9 +34,15 @@
 		where
 		resumeid=#{resumeid}
 	</delete>
-	<select id="queryByOne" parameterType="int" resultType="Resume">
+	<select id="queryByOne" parameterType="string" resultType="Resume">
 		select
 		*
+		from Resume
+		where userid=#{userid}
+	</select>
+	<select id="check" parameterType="string" resultType="int">
+		select
+		count(*)
 		from Resume
 		where userid=#{userid}
 	</select>

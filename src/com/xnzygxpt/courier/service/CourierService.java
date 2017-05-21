@@ -52,4 +52,24 @@ public class CourierService {
 		hmap.put("resultBean", clist);
 		return hmap;
 	}
+
+	public Map<String, Object> queryByID(int courierid) {
+		Map<String, Object> hmap = new HashMap<String, Object>();
+		Courier courier = new Courier();
+		String returnString = "查询失败！";
+		int returnCode = 0;
+		try {
+			courier = courierImpl.queryByID(courierid);
+			returnString = "查询成功！";
+			returnCode = 1;
+		} catch (Exception e) {
+			returnString = "查询失败！";
+			returnCode = 0;
+			e.printStackTrace();
+		}
+		hmap.put("returnCode", returnCode + "");
+		hmap.put("returnString", returnString);
+		hmap.put("bean", courier);
+		return hmap;
+	}
 }

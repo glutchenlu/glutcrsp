@@ -28,4 +28,13 @@ public class LearningDataController {
 		return modelView;
 	}
 
+	@RequestMapping(value = "/queryByID", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public ModelAndView queryByID(int learning_dataid) {
+		ModelAndView modelView = new ModelAndView();
+		Map<String, Object> resultMap = learningDataservice
+				.queryByID(learning_dataid);
+		modelView.addObject("resultMap", resultMap);
+		return modelView;
+	}
 }

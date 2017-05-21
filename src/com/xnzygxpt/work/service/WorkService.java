@@ -63,4 +63,24 @@ public class WorkService {
 		hmap.put("resultcompany", clist);
 		return hmap;
 	}
+
+	public Map<String, Object> queryByID(int workid) {
+		Map<String, Object> hmap = new HashMap<String, Object>();
+		Work work = new Work();
+		String returnString = "查询失败！";
+		int returnCode = 0;
+		try {
+			work = workImpl.queryByID(workid);
+			returnString = "查询成功！";
+			returnCode = 1;
+		} catch (Exception e) {
+			returnString = "查询失败！";
+			returnCode = 0;
+			e.printStackTrace();
+		}
+		hmap.put("returnCode", returnCode + "");
+		hmap.put("returnString", returnString);
+		hmap.put("bean", work);
+		return hmap;
+	}
 }

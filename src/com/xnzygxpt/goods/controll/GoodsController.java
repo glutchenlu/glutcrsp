@@ -56,4 +56,12 @@ public class GoodsController {
 		return modelView;
 	}
 
+	@RequestMapping(value = "/queryByID", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public ModelAndView queryByID(int goodsid) {
+		ModelAndView modelView = new ModelAndView();
+		Map<String, Object> resultMap = goodsservice.queryByID(goodsid);
+		modelView.addObject("resultMap", resultMap);
+		return modelView;
+	}
 }

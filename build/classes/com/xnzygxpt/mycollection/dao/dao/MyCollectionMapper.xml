@@ -8,8 +8,8 @@
 	<insert id="add" parameterType="MyCollection" useGeneratedKeys="true"
 		keyProperty="collectionid">
 		insert into
-		mycollection(userid,collection_time,collection_contentid,type) values
-		(#{userid},date_format(now(),'%Y-%m-%d %H:%i:%s'),#{collection_contentid},#{type})
+		mycollection(userid,collection_time,serviceid,typename,type,servicetitle) values
+		(#{userid},date_format(now(),'%Y-%m-%d %H:%i:%s'),#{serviceid},#{typeName},#{type},#{serviceTitle})
 	</insert>
 	<delete id="del" parameterType="int">
 		delete from mycollection
@@ -24,5 +24,15 @@
 	<select id="queryAll" resultType="MyCollection">
 		select
 		* from mycollection
+	</select>
+	<select id="querybyuserid" parameterType="string" resultType="MyCollection">
+		select
+		* from mycollection
+		where userid=#{userid}
+	</select>
+	<select id="check" parameterType="MyCollection" resultType="int">
+		select
+		count(*) from mycollection
+		where userid=#{userid} and serviceid=#{serviceid} and type=#{type}
 	</select>
 </mapper>

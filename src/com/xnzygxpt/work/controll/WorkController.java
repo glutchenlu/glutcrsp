@@ -35,4 +35,13 @@ public class WorkController {
 		modelView.addObject("resultMap", resultMap);
 		return modelView;
 	}
+
+	@RequestMapping(value = "/queryByID", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public ModelAndView queryByID(int workid) {
+		ModelAndView modelView = new ModelAndView();
+		Map<String, Object> resultMap = workservice.queryByID(workid);
+		modelView.addObject("resultMap", resultMap);
+		return modelView;
+	}
 }

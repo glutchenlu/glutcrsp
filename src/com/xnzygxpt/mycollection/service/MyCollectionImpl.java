@@ -18,8 +18,16 @@ public class MyCollectionImpl {
 		return per.queryByID(collectionid);
 	}
 
+	public int check(MyCollection p) {
+		return per.check(p);
+	}
+
 	public List<MyCollection> queryAll() {
 		return per.queryAll();
+	}
+
+	public List<MyCollection> querybyuserid(String userid) {
+		return per.querybyuserid(userid);
 	}
 
 	@Transactional

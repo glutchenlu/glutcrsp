@@ -28,8 +28,12 @@ public class ResumeImpl {
 		return per.update(p);
 	}
 
-	public List<Resume> queryByOne() {
-		return per.queryByOne();
+	public List<Resume> queryByOne(String userid) {
+		return per.queryByOne(userid);
+	}
+
+	public int check(String userid) {
+		return per.check(userid);
 	}
 
 	@Transactional

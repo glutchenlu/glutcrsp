@@ -23,5 +23,6 @@
 		<mapper resource="com/xnzygxpt/work/dao/dao/WorkMapper.xml" />
 		<mapper resource="com/xnzygxpt/xuser/dao/dao/XUserMapper.xml" />
 		<mapper resource="com/xnzygxpt/company/dao/dao/CompanyMapper.xml" />
+		<mapper resource="com/xnzygxpt/webchar/dao/dao/WebCharMapper.xml" />
 	</mappers>
 </configuration>

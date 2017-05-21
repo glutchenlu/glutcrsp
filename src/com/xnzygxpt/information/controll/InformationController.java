@@ -28,4 +28,22 @@ public class InformationController {
 		return modelView;
 	}
 
+	@RequestMapping(value = "/queryByID", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public ModelAndView queryByID(int informationid) {
+		ModelAndView modelView = new ModelAndView();
+		Map<String, Object> resultMap = informationservice
+				.queryByID(informationid);
+		modelView.addObject("resultMap", resultMap);
+		return modelView;
+	}
+
+	@RequestMapping(value = "/add", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public ModelAndView add(Information information) {
+		ModelAndView modelView = new ModelAndView();
+		Map<String, String> resultMap = informationservice.add(information);
+		modelView.addObject("resultMap", resultMap);
+		return modelView;
+	}
 }

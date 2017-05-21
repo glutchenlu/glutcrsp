@@ -34,4 +34,24 @@ public class LearningDataService {
 		hmap.put("resultBean", glist);
 		return hmap;
 	}
+
+	public Map<String, Object> queryByID(int learning_dataid) {
+		Map<String, Object> hmap = new HashMap<String, Object>();
+		LearningData learningData = new LearningData();
+		String returnString = "查询失败！";
+		int returnCode = 0;
+		try {
+			learningData = learningDataImpl.queryByID(learning_dataid);
+			returnString = "查询成功！";
+			returnCode = 1;
+		} catch (Exception e) {
+			returnString = "查询失败！";
+			returnCode = 0;
+			e.printStackTrace();
+		}
+		hmap.put("returnCode", returnCode + "");
+		hmap.put("returnString", returnString);
+		hmap.put("bean", learningData);
+		return hmap;
+	}
 }
