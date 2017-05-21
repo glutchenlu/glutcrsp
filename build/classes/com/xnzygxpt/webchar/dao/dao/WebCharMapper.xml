@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xnzygxpt.webchar.dao.dao.WebCharMapper">
+
+	<insert id="add" parameterType="WebChar" useGeneratedKeys="true"
+		keyProperty="webcharid">
+		insert into
+		WebChar(informationid,userid,content,release_time)
+		values
+		(#{informationid},#{userid},#{content},date_format(now(),'%Y-%m-%d %H:%i:%s'))
+	</insert>
+	<select id="querybyinfo" resultType="WebChar" parameterType="int">
+		select
+		* from WebChar where informationid=#{informationid}
+	</select>
+	<select id="querybyid" resultType="WebChar" parameterType="int">
+		select
+		* from WebChar where webcharid=#{webcharid}
+	</select>
+</mapper>
