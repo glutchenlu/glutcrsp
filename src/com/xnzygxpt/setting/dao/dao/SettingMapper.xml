@@ -9,7 +9,7 @@
 		keyProperty="settingid">
 		insert into
 		setting(tongzhi,tanchuang,delay) values
-		('是','是','30',)
+		('是','是','30')
 	</insert>
 	<update id="update" parameterType="Setting">
 		update setting set

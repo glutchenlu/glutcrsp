@@ -70,4 +70,15 @@ public class XUserController {
 		modelView.addObject("resultMap", resultMap);
 		return modelView;
 	}
+
+	@RequestMapping(value = "/modify", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public ModelAndView modify(String userid, String newpassword,
+			String password) {
+		ModelAndView modelView = new ModelAndView();
+		Map<String, Object> resultMap = userService.modify(userid, password,
+				newpassword);
+		modelView.addObject("resultMap", resultMap);
+		return modelView;
+	}
 }

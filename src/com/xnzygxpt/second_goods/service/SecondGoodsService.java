@@ -49,8 +49,9 @@ public class SecondGoodsService {
 		for (MultipartFile file : multiFiles) {
 			if (file != null && !file.isEmpty()) {
 				String fileName = file.getOriginalFilename();
-				System.out.println("fileName：" + fileName);
-				File newFile = new File(savePath, new Date().getTime() + "_"
+				fileName = fileName.substring(fileName.lastIndexOf("."));
+//				System.out.println("fileName：" + fileName);
+				File newFile = new File(savePath, new Date().getTime()
 						+ fileName);
 				if (!newFile.getParentFile().exists()) {
 					System.out.println("文件夹不存在");

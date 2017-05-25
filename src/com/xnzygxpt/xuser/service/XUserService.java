@@ -203,4 +203,29 @@ public class XUserService {
 		hmap.put("returnBean", listMap);
 		return hmap;
 	}
+
+	public Map<String, Object> modify(String userid, String password,
+			String newpassword) {
+		Map<String, Object> hmap = new HashMap<String, Object>();
+		XUser localUser = userImpl.queryByID(userid);
+		int returnCode = 0;
+		System.out.println("userid:" + userid);
+		String returnString = "帐号不存在！";
+		if (localUser != null) {
+			if (password.equals(localUser.getPassword())) {
+				localUser.setPassword(newpassword);
+				userImpl.modify(localUser);
+				returnString = "修改成功！";
+				returnCode = 1;
+			} else {
+				returnString = "帐号与旧密码不匹配！";
+			}
+		} else {
+			returnString = "帐号不存在！";
+		}
+		hmap.put("returnCode", returnCode + "");
+		hmap.put("returnString", returnString);
+		hmap.put("resultUser", localUser);
+		return hmap;
+	}
 }

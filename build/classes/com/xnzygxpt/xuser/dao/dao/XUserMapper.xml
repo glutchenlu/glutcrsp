@@ -19,4 +19,9 @@
 		select
 		* from user where userid=#{userid}
 	</select>
+	<update id="modify" parameterType="XUser">
+		update user set
+		password=#{password}
+		where userid=#{userid}
+	</update>
 </mapper>

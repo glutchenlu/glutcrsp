@@ -13,11 +13,24 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import com.xnzygxpt.basic.dao.vo.Basic;
 import com.xnzygxpt.util.LocPath;
 
+/**
+ * basic业务层，控制层传递数据至业务层，进行业务操作
+ * 
+ * @author CL
+ *
+ */
 @Service
 public class BasicService {
 	@Autowired
 	private BasicImpl basicImpl;
 
+	/**
+	 * 根据basicid查找basic记录
+	 * 
+	 * @param basic
+	 *            从basic中取得basicid
+	 * @return
+	 */
 	public Map<String, Object> findbyid(Basic basic) {
 		Map<String, Object> hmap = new HashMap<String, Object>();
 		String returnString = "查询失败！";
@@ -82,9 +95,9 @@ public class BasicService {
 		long startTime = System.currentTimeMillis();
 		if (multiFiles != null && !multiFiles.isEmpty()) {
 			String fileName = multiFiles.getOriginalFilename();
-			System.out.println("fileName：" + fileName);
-			File newFile = new File(savePath, new Date().getTime() + "_"
-					+ fileName);
+			fileName = fileName.substring(fileName.lastIndexOf("."));
+			// System.out.println("fileName：" + fileName);
+			File newFile = new File(savePath, new Date().getTime() + fileName);
 			if (!newFile.getParentFile().exists()) {
 				System.out.println("文件夹不存在");
 				newFile.getParentFile().mkdir();

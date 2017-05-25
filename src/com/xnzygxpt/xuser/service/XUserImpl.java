@@ -76,4 +76,9 @@ public class XUserImpl {
 	public int updateStatus(XUser p) {
 		return xuserMapper.updateStatus(p);
 	}
+
+	@Transactional
+	public void modify(XUser p) {
+		xuserMapper.modify(p);
+	}
 }

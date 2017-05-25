@@ -31,6 +31,8 @@ public class TestMain {
 		Date now = new Date();
 		nowTime = sdf.format(now);
 		System.out.println(nowTime);
+		String ss = "/storage/emulated/0/DCIM/Camera/IMG_20170509_045830.jpg";
+		System.out.println(ss.substring(ss.lastIndexOf("/") + 1));
 	}
 
 }
